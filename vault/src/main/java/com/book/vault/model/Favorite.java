@@ -22,6 +22,11 @@ public class Favorite {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    public Favorite(Reader reader, Book book) {
+        this.reader = reader;
+        this.book = book;
+    }
+
     public Long getId() {
         return id;
     }
