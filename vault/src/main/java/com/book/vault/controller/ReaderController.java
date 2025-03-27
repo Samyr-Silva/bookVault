@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/reader")
 public class ReaderController {
 
     @Autowired
@@ -28,13 +28,13 @@ public class ReaderController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/add")
     public ResponseEntity<Reader> addReader(@RequestBody Reader reader) {
-        Reader reader1 = readerService.addReader(reader);
+        Reader reader1 = readerService.saveReader(reader);
         return new ResponseEntity<>(reader1, HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         readerService.deleteReaderById(id);
-        return new ResponseEntity<>("Reader deleted sucssecifully", HttpStatus.OK);
+        return new ResponseEntity<>("Reader deleted successfully", HttpStatus.OK);
     }
 }

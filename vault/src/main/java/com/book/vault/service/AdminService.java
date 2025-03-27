@@ -22,7 +22,7 @@ public class AdminService {
         return adminRepository.findAll();
     }
 
-    public Admin addAdmin(Admin admin){
+    public Admin saveAdmin(Admin admin){
         adminRepository.save(admin);
         return admin;
     }

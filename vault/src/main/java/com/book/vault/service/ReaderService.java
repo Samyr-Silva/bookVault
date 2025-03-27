@@ -22,7 +22,7 @@ public class ReaderService {
         return readerRepository.findAll();
     }
 
-    public Reader addReader(Reader reader){
+    public Reader saveReader(Reader reader){
         readerRepository.save(reader);
         return reader;
     }
