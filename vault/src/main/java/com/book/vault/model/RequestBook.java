@@ -1,14 +1,12 @@
 package com.book.vault.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 @Entity
-@Table(name = "books")
-@NoArgsConstructor
-@AllArgsConstructor
-public class Book {
+@Table(name = "book_requests")
+@Data
+public class RequestBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +23,9 @@ public class Book {
 
     private Integer year;
 
-    private boolean available = true;
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
+    @ManyToOne
+    @JoinColumn(name = "reader_id", nullable = false)
+    private Reader reader; // Quem fez a solicitação
 
     public Long getId() {
         return id;
@@ -41,6 +33,14 @@ public class Book {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getTitle() {
@@ -67,11 +67,12 @@ public class Book {
         this.author = author;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public Reader getReader() {
+        return reader;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 }
+

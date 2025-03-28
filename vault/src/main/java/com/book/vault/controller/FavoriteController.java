@@ -1,12 +1,7 @@
 package com.book.vault.controller;
 
-import com.book.vault.model.Book;
 import com.book.vault.model.Favorite;
-import com.book.vault.model.Reader;
-import com.book.vault.repositories.FavoriteRepository;
-import com.book.vault.service.BookService;
 import com.book.vault.service.FavoriteService;
-import com.book.vault.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
