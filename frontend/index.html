@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Vault - Livraria Online</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Book Vault - Online Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Book Vault 📚</h1>
         <nav>
-            <button onclick="showBooks()">Ver Livros</button>
-            <button onclick="showRequestForm()">Solicitar Livro</button>
+            <button onclick="showBooks()">Show books</button>
+            <button onclick="showRequestForm()">Request a book</button>
         </nav>
     </header>
 
     <main id="content">
-        <h2>Bem-vindo à Book Vault</h2>
-        <p>Escolha uma opção acima para ver os livros ou solicitar um novo.</p>
+        <h2>Welcome to Book Vault</h2>
+        <p>choose your option above to see books or request one.</p>
+        <div id="books-container"></div>
+        
     </main>
+    
 
     <script src="script.js"></script>
 </body>
