@@ -70,3 +70,41 @@ function showRequestForm() {
     });
 }
 
+function loadRequests() {
+    fetch("http://localhost:8080/request/list")
+        .then(response => response.json())
+        .then(requests => {
+            const requestsList = document.getElementById("requests-list");
+            requestsList.innerHTML = ''; // Limpar as solicitações antigas
+            requests.forEach(request => {
+                const requestCard = document.createElement("div");
+                requestCard.classList.add("request-card");
+                requestCard.innerHTML = `
+                    <p><strong>Title:</strong> ${request.title}</p>
+                    <p><strong>Category:</strong> ${request.category}</p>
+                    <p><strong>Author:</strong> ${request.author}</p>
+                    <p><strong>Year:</strong> ${request.year}</p>
+                    <button onclick="approveRequest(${request.id})">Approve Request</button>
+                `;
+                requestsList.appendChild(requestCard);
+            });
+        })
+        .catch(error => console.error("Erro on loading solicitations:", error));
+}
+
+// Função para aprovar uma solicitação
+function approveRequest(requestId) {
+    fetch(`http://localhost:8080/request/${requestId}/approve`, {
+        method: "POST"
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data); // Exibe a resposta da aprovação
+        loadRequests(); // Atualiza a lista após aprovação
+    })
+    .catch(error => console.error("Error to approve solicitation:", error));
+}
+
+// Carregar solicitações assim que a página for carregada
+window.onload = loadRequests;
+

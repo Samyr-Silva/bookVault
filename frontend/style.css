@@ -1,17 +1,31 @@
+/* Resetando algumas margens e preenchimentos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
+/* Cabeçalho */
 header {
     background-color: #333;
     color: white;
     padding: 15px;
 }
 
+/* Navegação */
 nav button {
     margin: 10px;
     padding: 10px;
@@ -27,10 +41,13 @@ nav button:hover {
     background-color: #0056b3;
 }
 
+/* Container Principal */
 main {
     padding: 20px;
+    flex-grow: 1;
 }
 
+/* Container de Livros */
 #books-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -39,19 +56,22 @@ main {
     justify-content: center;
 }
 
+/* Cartão de Livro */
 .book-card {
     background: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
     text-align: left;
 }
 
 .book-card:hover {
     transform: scale(1.05);
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2); /* Aumentar o efeito de sombra ao passar o mouse */
 }
 
+/* Título do Livro */
 .book-title {
     font-size: 20px;
     font-weight: bold;
@@ -59,12 +79,14 @@ main {
     margin-bottom: 10px;
 }
 
+/* Autor do Livro */
 .book-author {
     font-size: 16px;
     color: #555;
     margin-bottom: 5px;
 }
 
+/* Categoria do Livro */
 .book-category {
     font-size: 14px;
     background: #007bff;
@@ -74,6 +96,8 @@ main {
     display: inline-block;
     margin-top: 10px;
 }
+
+/* Ano do Livro */
 .book-year {
     font-size: 14px;
     font-weight: bold;
@@ -85,6 +109,7 @@ main {
     margin-top: 5px;
 }
 
+/* Disponibilidade do Livro */
 .book-available {
     font-size: 14px;
     font-weight: bold;
@@ -102,4 +127,52 @@ main {
 .book-available.false {
     color: #fff;
     background-color: #dc3545; /* Vermelho para indisponível */
+}
+
+/* Seleção de Papel de Leitor/Admin */
+.role-selection {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    width: 200px; /* Aumentar o tamanho do botão */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    #books-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    #books-container {
+        grid-template-columns: 1fr;
+    }
 }
