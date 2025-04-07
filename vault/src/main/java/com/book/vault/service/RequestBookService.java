@@ -59,5 +59,18 @@ public class RequestBookService {
         }
         return "Request not found!";
     }
+
+    public String rejectRequest(Long requestId){
+        Optional<RequestBook> requestBook = requestBookRepository.findById(requestId);
+
+        if(requestBook.isPresent()){
+            RequestBook book = requestBook.get();
+            requestBookRepository.delete(book);
+
+            return "Request rejected successfully!";
+        }
+
+        return "Request not found!";
+    }
 }
 
