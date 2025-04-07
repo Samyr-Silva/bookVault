@@ -85,6 +85,8 @@ function loadRequests() {
                     <p><strong>Author:</strong> ${request.author}</p>
                     <p><strong>Year:</strong> ${request.year}</p>
                     <button onclick="approveRequest(${request.id})">Approve Request</button>
+                    <button onclick="rejectRequest(${request.id})">Reject Request</button>
+
                 `;
                 requestsList.appendChild(requestCard);
             });
@@ -103,6 +105,19 @@ function approveRequest(requestId) {
         loadRequests(); // Atualiza a lista após aprovação
     })
     .catch(error => console.error("Error to approve solicitation:", error));
+}
+
+// Função para rejeitar uma solicitação
+function approveRequest(requestId) {
+    fetch(`http://localhost:8080/request/${requestId}/reject`, {
+        method: "POST"
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data); // Exibe a resposta da aprovação
+        loadRequests(); // Atualiza a lista após aprovação
+    })
+    .catch(error => console.error("Error to reject solicitation:", error));
 }
 
 // Carregar solicitações assim que a página for carregada
