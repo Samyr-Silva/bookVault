@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Book Vault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Login - Book Vault</h1>
+</header>
+
+<main>
+    <form id="loginForm" class="login-form">
+        <h2>Enter your details</h2>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <button type="submit">Login</button>
+    </form>
+</main>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    if (!name || !email) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:8080/reader/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email })
+        });
+
+        if (response.ok) {
+            const reader = await response.json();
+            localStorage.setItem("readerId", reader.id); // Salva ID pra usar depois
+
+            const role = new URLSearchParams(window.location.search).get("role");
+            if (role === "reader") {
+                window.location.href = "reader.html";
+            } else {
+                window.location.href = "admin.html";
+            }
+        } else {
+            alert("Usuário não encontrado. Verifique nome e e-mail.");
+        }
+
+    } catch (error) {
+        console.error("Erro durante o login:", error);
+        alert("Erro ao conectar com o servidor.");
+    }
+});
+
+</script>
+
+</body>
+</html>

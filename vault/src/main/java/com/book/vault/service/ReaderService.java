@@ -30,4 +30,8 @@ public class ReaderService {
     public void deleteReaderById(Long id){
         readerRepository.deleteById(id);
     }
+
+    public Reader findReaderByEmail(String name, String email){
+        return readerRepository.findByNameAndEmail(name, email);
+    }
 }

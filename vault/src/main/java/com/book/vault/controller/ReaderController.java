@@ -37,4 +37,15 @@ public class ReaderController {
         readerService.deleteReaderById(id);
         return new ResponseEntity<>("Reader deleted successfully", HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/login")
+    public ResponseEntity<Reader> login(@RequestBody Reader loginInfo) {
+        Reader reader = readerService.findReaderByEmail(loginInfo.getName(), loginInfo.getEmail());
+        if (reader != null) {
+            return ResponseEntity.ok(reader);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
 }

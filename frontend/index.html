@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Vault - Online Library</title>
+    <title>Book Vault</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <a href="home-page.html">
-            <h1>Book Vault 📚</h1>
-        </a>
-        <nav>
-            <button onclick="showBooks()">Show books</button>
-            <button onclick="showRequestForm()">Request a book</button>
-        </nav>
+        <h1>Welcome to Book Vault</h1>
     </header>
 
-    <main id="content">
-        <h2>Welcome to Book Vault</h2>
-        <p>choose your option above to see books or request one.</p>
-        <div id="books-container"></div>
-        
+    <main>
+        <div class="role-selection">
+            <h2>Escolha seu perfil:</h2>
+            <button onclick="redirectTo('reader')">I'm a Reader</button>
+            <button onclick="redirectTo('admin')">I'm a Admin</button>
+        </div>
     </main>
-    
 
-    <script src="script.js"></script>
+    <script>
+        function redirectTo(role) {
+            window.location.href = `login.html?role=${role}`;
+        }
+    </script>
+
 </body>
 </html>
