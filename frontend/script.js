@@ -108,9 +108,9 @@ function approveRequest(requestId) {
 }
 
 // Função para rejeitar uma solicitação
-function approveRequest(requestId) {
+function rejectRequest(requestId) {
     fetch(`http://localhost:8080/request/${requestId}/reject`, {
-        method: "POST"
+        method: "DELETE"
     })
     .then(response => response.json())
     .then(data => {

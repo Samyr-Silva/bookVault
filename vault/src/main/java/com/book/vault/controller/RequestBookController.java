@@ -38,7 +38,7 @@ public class RequestBookController {
         }
         return new ResponseEntity<>("Request not found", HttpStatus.NOT_FOUND);
     }
-    @RequestMapping(method = RequestMethod.POST, path = "/{requestId}/reject")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{requestId}/reject")
     public ResponseEntity<String> rejectRequest(@PathVariable Long requestId) {
         String msg = requestBookService.rejectRequest(requestId);
         if (msg.equals("Request rejected successfully!")) {
