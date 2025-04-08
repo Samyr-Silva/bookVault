@@ -85,7 +85,7 @@ function loadRequests() {
                     <p><strong>Author:</strong> ${request.author}</p>
                     <p><strong>Year:</strong> ${request.year}</p>
                     <button onclick="approveRequest(${request.id})">Approve Request</button>
-                    <button onclick="rejectRequest(${request.id})">Reject Request</button>
+                    <button class="button-reject" onclick="rejectRequest(${request.id})">Reject Request</button>
 
                 `;
                 requestsList.appendChild(requestCard);

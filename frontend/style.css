@@ -155,6 +155,24 @@ button:hover {
     background-color: #0056b3;
 }
 
+.button-reject {
+    background-color: #f80606;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    width: 200px; /* Aumentar o tamanho do botão */
+}
+
+
+.button-reject:hover {
+    background-color: #de0a0a;
+}
+
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
     #books-container {
