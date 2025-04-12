@@ -1,6 +1,7 @@
 package com.book.vault.service;
 
 import com.book.vault.model.Admin;
+import com.book.vault.model.Reader;
 import com.book.vault.repositories.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,12 @@ public class AdminService {
 
     public void deleteAdminById(Long id){
         adminRepository.deleteById(id);
+    }
+
+    public Admin modifyAdminRole(Long id, Admin admin){
+        Admin newAdmin = getAdminById(id);
+        newAdmin.setRole(admin.getRole());
+        adminRepository.save(admin);
+        return newAdmin;
     }
 }

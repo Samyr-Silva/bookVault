@@ -1,6 +1,7 @@
 package com.book.vault.controller;
 
 import com.book.vault.model.Admin;
+import com.book.vault.model.Reader;
 import com.book.vault.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,11 @@ public class AdminController {
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         adminService.deleteAdminById(id);
         return new ResponseEntity<>("Admin deleted successfully", HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/mod/{id}")
+    public ResponseEntity<Admin> modifyRole(@PathVariable Long id, @RequestBody Admin admin){
+        Admin newAdmin = adminService.modifyAdminRole(id, admin);
+        return new ResponseEntity<>(newAdmin, HttpStatus.ACCEPTED);
     }
 }

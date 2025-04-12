@@ -35,7 +35,7 @@ public class ReaderService {
         return readerRepository.findByNameAndEmail(name, email);
     }
 
-    public Reader modifyRole(Long id, Reader reader){
+    public Reader modifyReaderRole(Long id, Reader reader){
         Reader newReader = getReaderById(id);
         newReader.setRole(reader.getRole());
         readerRepository.save(newReader);
