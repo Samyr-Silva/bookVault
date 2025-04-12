@@ -38,4 +38,8 @@ public class AdminService {
         adminRepository.save(admin);
         return newAdmin;
     }
+
+    public Admin findAdminByNameAndEmail(String name, String email){
+       return adminRepository.findByNameAndEmail(name, email);
+    }
 }

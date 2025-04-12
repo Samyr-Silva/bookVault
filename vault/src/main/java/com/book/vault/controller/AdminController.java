@@ -43,4 +43,14 @@ public class AdminController {
         Admin newAdmin = adminService.modifyAdminRole(id, admin);
         return new ResponseEntity<>(newAdmin, HttpStatus.ACCEPTED);
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/login")
+    public ResponseEntity<Admin> login(@RequestBody Admin loginInfo) {
+        Admin admin = adminService.findAdminByNameAndEmail(loginInfo.getName(), loginInfo.getEmail());
+        if (admin != null && "admin".equalsIgnoreCase(admin.getRole())) {
+            return ResponseEntity.ok(admin);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
 }

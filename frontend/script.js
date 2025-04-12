@@ -1,4 +1,4 @@
-// Função para carregar os livros do backend
+// to loading the books from backend
 function showBooks() {
     console.log("entrou");
     fetch("http://localhost:8080/vault/list")
@@ -28,7 +28,7 @@ function showBooks() {
         .catch(error => console.error("Erro to loading books:", error));
 }
 
-// Função para exibir o formulário de solicitação de livros
+// Show the form of request
 function showRequestForm() {
     document.getElementById("content").innerHTML = `
         <h2>Solicitar Novo Livro</h2>
@@ -70,6 +70,8 @@ function showRequestForm() {
     });
 }
 
+// load the requests
+
 function loadRequests() {
     fetch("http://localhost:8080/request/list")
         .then(response => response.json())
@@ -94,7 +96,7 @@ function loadRequests() {
         .catch(error => console.error("Erro on loading solicitations:", error));
 }
 
-// Função para aprovar uma solicitação
+// approve requests
 function approveRequest(requestId) {
     fetch(`http://localhost:8080/request/${requestId}/approve`, {
         method: "POST"
@@ -107,7 +109,7 @@ function approveRequest(requestId) {
     .catch(error => console.error("Error to approve solicitation:", error));
 }
 
-// Função para rejeitar uma solicitação
+// reject requests
 function rejectRequest(requestId) {
     fetch(`http://localhost:8080/request/${requestId}/reject`, {
         method: "DELETE"
@@ -120,6 +122,6 @@ function rejectRequest(requestId) {
     .catch(error => console.error("Error to reject solicitation:", error));
 }
 
-// Carregar solicitações assim que a página for carregada
+// load the requests already
 window.onload = loadRequests;
 

@@ -1,0 +1,30 @@
+<form id="adminLoginForm">
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <button type="submit">Login</button>
+</form>
+
+<script>
+document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const user = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value
+    };
+
+    fetch("http://localhost:8080/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user)
+    })
+    .then(res => {
+        if (!res.ok) throw new Error("Login inválido");
+        return res.json();
+    })
+    .then(data => {
+        window.location.href = "admin.html";
+    })
+    .catch(err => alert(err.message));
+});
+</script>
