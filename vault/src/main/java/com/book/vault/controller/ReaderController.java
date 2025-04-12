@@ -48,4 +48,10 @@ public class ReaderController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = "/mod/{id}")
+    public ResponseEntity<Reader> modifyRole(@PathVariable Long id, @RequestBody Reader reader){
+        Reader newReader = readerService.modifyRole(id, reader);
+        return new ResponseEntity<>(newReader, HttpStatus.ACCEPTED);
+    }
+
 }

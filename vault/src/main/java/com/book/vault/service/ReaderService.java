@@ -34,4 +34,11 @@ public class ReaderService {
     public Reader findReaderByEmail(String name, String email){
         return readerRepository.findByNameAndEmail(name, email);
     }
+
+    public Reader modifyRole(Long id, Reader reader){
+        Reader newReader = getReaderById(id);
+        newReader.setRole(reader.getRole());
+        readerRepository.save(newReader);
+        return newReader;
+    }
 }
