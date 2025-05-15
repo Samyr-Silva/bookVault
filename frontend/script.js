@@ -1,6 +1,11 @@
 // to loading the books from backend
 function showBooks() {
-    console.log("entrou");
+    document.getElementById("content").innerHTML = `
+     <h2>Welcome to Book Vault</h2>
+    <p>choose your option above to see books or request one.</p>
+    <div id="books-container"></div>
+    `;
+
     fetch("http://localhost:8080/vault/list")
         .then(response => response.json())
         .then(books => {
@@ -41,6 +46,7 @@ function showRequestForm() {
             <button type="submit">Request book</button>
         </form>
         <p id="responseMessage"></p>
+        <div id="books-container"></div>
     `;
 
     document.getElementById("requestForm").addEventListener("submit", function (event) {
@@ -68,6 +74,8 @@ function showRequestForm() {
             document.getElementById("responseMessage").innerText = "❌ Error. Try again.";
         });
     });
+
+    
 }
 
 // load the requests
