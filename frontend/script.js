@@ -14,6 +14,7 @@ function showBooks() {
 
             books.forEach(book => {
                 const bookCard = document.createElement("div");
+            
                 bookCard.classList.add("book-card");
 
                 const availabilityClass = book.available ? "true" : "false";
@@ -21,11 +22,13 @@ function showBooks() {
 
 
                 bookCard.innerHTML = `
+                <a href = "book.html?id=${book.id}">
                     <div class="book-title">${book.title}</div>
                     <div class="book-author">Autor: ${book.author}</div>
                     <div class="book-category">${book.category}</div>
                     <div class="book-year">${book.year}</div>
                     <div class="book-available ${availabilityClass}">${availabilityText}</div>
+                </a>
                 `;
                 container.appendChild(bookCard);
             });
