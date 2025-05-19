@@ -133,6 +133,59 @@ function rejectRequest(requestId) {
     .catch(error => console.error("Error to reject solicitation:", error));
 }
 
+ async function showFavorites() {
+        const content = document.getElementById('content');
+        content.innerHTML = "<h2>Your Favorite Books</h2>";
+
+        // Pega o usuário logado do localStorage
+        const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+        const readerId = loggedUser ? loggedUser.id : null;
+
+        if (!readerId) {
+          alert("Você precisa fazer login para ver seus favoritos.");
+          window.location.href = "index.html";
+          return;
+        }
+
+        try {
+          const res = await fetch(`http://localhost:8080/fav/${readerId}/list`);
+          if (!res.ok) throw new Error("Nenhum favorito encontrado.");
+
+          const favorites = await res.json();
+
+          if (favorites.length === 0) {
+            content.innerHTML += "<p>You have no favorite books yet.</p>";
+            return;
+          }
+
+          // Container para os favoritos
+          const favList = document.createElement("div");
+          favList.id = "favorites-list";
+
+          favorites.forEach(fav => {
+            const book = fav.book; // assumindo estrutura do backend
+
+            const item = document.createElement("div");
+            item.className = "favorite-item p-4 border-b";
+
+            item.innerHTML = `
+              <h3 class="text-lg font-bold">${book.title}</h3>
+              <p>Author: ${book.author}</p>
+              <p>Category: ${book.category}</p>
+              <p>Year: ${book.year}</p>
+            `;
+
+            favList.appendChild(item);
+          });
+
+          content.appendChild(favList);
+
+        } catch (error) {
+          console.error(error);
+          content.innerHTML += "<p>Failed to load favorite books.</p>";
+        }
+      }
+
 // load the requests already
 window.onload = loadRequests;
 

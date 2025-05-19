@@ -25,6 +25,10 @@ document.getElementById("readerLoginForm").addEventListener("submit", function(e
     .then(data => {
         window.location.href = "reader.html";
     })
+    .then(data => {
+        localStorage.setItem("loggedUser", JSON.stringify(data)); // <-- salva usuário
+        window.location.href = "reader.html";
+    })
     .catch(err => alert(err.message));
 });
 </script>

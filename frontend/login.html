@@ -51,7 +51,7 @@
     
             if (response.ok) {
                 const user = await response.json();
-                localStorage.setItem("userId", user.id); // can use the same for both
+                localStorage.setItem("loggedUser", JSON.stringify(user)); // can use the same for both
     
                 if (user.role !== role) {
                     alert(`You're not a ${role}.`);
