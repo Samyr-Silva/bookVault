@@ -5,18 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Vault - Online Library</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <a href="index.html">
-            <h1>Book Vault 📚</h1>
-        </a>
-        <nav>
+        <!-- Navbar -->
+  <nav class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="index.html" class="text-xl font-semibold text-indigo-600">📚 BookVault</a>
+
+    <!-- Menu -->
+    <div class="space-x-6 hidden md:flex">
+      <a href="index.html" class="text-gray-700 hover:text-indigo-600">Login</a>
+      <a href="reader.html" class="text-gray-700 hover:text-indigo-600">Home</a>
+      <a href="contact.html" class="text-gray-700 hover:text-indigo-600">Contact</a>
+    </div>
+  </nav>
+
+        
             <button onclick="showBooks()">Show books</button>
             <button onclick="showRequestForm()">Request a book</button>
             <button onclick="showFavorites()">Show favorites</button>
-        </nav>
     </header>
 
     <main id="content">
