@@ -1,7 +1,6 @@
 package com.book.vault.controller;
 
 import com.book.vault.model.Admin;
-import com.book.vault.model.Reader;
 import com.book.vault.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -22,6 +22,7 @@ public class FavoriteController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/{readerId}/add/{bookId}")
     public ResponseEntity<String> favoriteBook(@PathVariable Long readerId, @PathVariable Long bookId) {
+
         return new ResponseEntity<>(favoriteService.favoriteBook(readerId, bookId), HttpStatus.OK);
     }
 

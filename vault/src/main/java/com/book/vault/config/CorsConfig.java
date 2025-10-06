@@ -13,10 +13,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://127.0.0.1:5500") // Permite o FrontEnd acessar a API
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .allowedOrigins("http://127.0.0.1:5500") // Allows the front access to the API
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Methods allow
+                        .allowedHeaders("*")  // Headers, like auth and content types
+                        .allowCredentials(true); // Cookies or tokens allow
             }
         };
     }

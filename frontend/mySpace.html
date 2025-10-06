@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="index.html" class="text-xl font-semibold text-indigo-600">📚 BookVault</a>
+
+    <!-- Menu -->
+    <div class="space-x-6 hidden md:flex">
+      <a href="index.html" class="text-gray-700 hover:text-indigo-600">Login</a>
+      <a href="reader.html" class="text-gray-700 hover:text-indigo-600">Home</a>
+      <a href="mySpace.html" class="text-gray-700 hover:text-indigo-600">MySpace</a>
+    </div>
+  </nav>
     <header>
         <button onclick="showFavorites()">Show favorites</button>
     </header>
