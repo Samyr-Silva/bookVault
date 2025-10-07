@@ -1,6 +1,5 @@
 package com.book.vault.controller;
 
-import com.book.vault.model.Admin;
 import com.book.vault.model.Book;
 import com.book.vault.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

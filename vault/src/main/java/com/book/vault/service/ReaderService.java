@@ -31,14 +31,14 @@ public class ReaderService {
         readerRepository.deleteById(id);
     }
 
-    public Reader findReaderByEmail(String name, String email){
-        return readerRepository.findByNameAndEmail(name, email);
-    }
-
     public Reader modifyReaderRole(Long id, Reader reader){
         Reader newReader = getReaderById(id);
         newReader.setRole(reader.getRole());
         readerRepository.save(newReader);
         return newReader;
+    }
+
+    public Reader findReaderByEmail(String name, String email){
+        return readerRepository.findByNameAndEmail(name, email);
     }
 }

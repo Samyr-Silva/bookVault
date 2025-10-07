@@ -15,8 +15,8 @@
 <main>
     <form id="loginForm" class="login-form">
         <h2>Enter your details</h2>
-        <input type="text" id="name" placeholder="Romario baiano" required>
-        <input type="email" id="email" placeholder="this.isaplaceholder@gmail.com" required>
+        <input type="text" id="name" placeholder="John Doe" required>
+        <input type="email" id="email" placeholder="John.doe@gmail.com" required>
         <button type="submit">Login</button>
     </form>
 </main>
@@ -36,9 +36,17 @@
         const role = new URLSearchParams(window.location.search).get("role");
     
         // Define a URL correta com base no role
-        const loginUrl = role === "admin"
-            ? "http://localhost:8080/admin/login"
-            : "http://localhost:8080/reader/login";
+        let loginUrl = "";
+
+        if(role === "admin"){
+
+            loginUrl = "http://localhost:8080/admin/login";
+        }
+        else {
+
+            loginUrl = "http://localhost:8080/reader/login";
+
+        }
     
         try {
             const response = await fetch(loginUrl, {
